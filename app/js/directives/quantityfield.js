@@ -1,3 +1,6 @@
+//**Granata**
+//Hide the quantity field
+
 four51.app.directive('quantityfield', ['$451', 'ProductDisplayService', function($451, ProductDisplayService){
     var obj = {
         scope: {
@@ -8,7 +11,7 @@ four51.app.directive('quantityfield', ['$451', 'ProductDisplayService', function
         restrict: 'E',
         template: '<div>'+
             '<inlineerror ng-show="lineitem.qtyError" title="{{lineitem.qtyError}}" />'+
-            '<select id="451qa_input_qty" class="form-control" ng-change="qtyChanged(lineitem)" ng-if="lineitem.PriceSchedule.RestrictedQuantity" ng-required="required" ng-model="lineitem.Quantity" ng-options="pb.Quantity as getRestrictedQtyText(pb, lineitem.Product.QuantityMultiplier) for pb in lineitem.PriceSchedule.PriceBreaks" ui-validate="\'validQuantityAddToOrder($value, lineitem)\'"><option value=""></option></select>'+
+            '<select id="451qa_input_qty" class="form-control hide" ng-change="qtyChanged(lineitem)" ng-if="lineitem.PriceSchedule.RestrictedQuantity" ng-required="required" ng-model="lineitem.Quantity" ng-options="pb.Quantity as getRestrictedQtyText(pb, lineitem.Product.QuantityMultiplier) for pb in lineitem.PriceSchedule.PriceBreaks" ui-validate="\'validQuantityAddToOrder($value, lineitem)\'"><option value=""></option></select>'+
             '<input ng-disabled="lineitem.Variant.RecordCount > 0 && lineitem.ID" id="451qa_input_qty" placeholder="0" autocomplete="off" class="form-control" ng-change="qtyChanged(lineitem)" ng-if="!lineitem.PriceSchedule.RestrictedQuantity" type="text" ng-required="required" name="qtyInput" ng-model="lineitem.Quantity" ui-validate="\'validQuantityAddToOrder($value, lineitem)\'"/>'+
             '</div>',
         link: function(scope){

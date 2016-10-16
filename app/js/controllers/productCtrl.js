@@ -1,3 +1,6 @@
+//**Granata**
+//Add to Order button routes to checkout, skipping the cart page.
+
 four51.app.controller('ProductCtrl', ['$scope', '$routeParams', '$route', '$location', '$451', 'Product', 'ProductDisplayService', 'Order', 'Variant', 'User',
 function ($scope, $routeParams, $route, $location, $451, Product, ProductDisplayService, Order, Variant, User) {
     $scope.isEditforApproval = $routeParams.orderID && $scope.user.Permissions.contains('EditApprovalOrder');
@@ -9,7 +12,7 @@ function ($scope, $routeParams, $route, $location, $451, Product, ProductDisplay
 
     $scope.selected = 1;
     $scope.LineItem = {};
-	$scope.addToOrderText = "Add To Cart";
+	$scope.addToOrderText = "Add To Order";
 	$scope.loadingIndicator = true;
 	$scope.loadingImage = true;
 	$scope.searchTerm = null;
@@ -103,7 +106,7 @@ function ($scope, $routeParams, $route, $location, $451, Product, ProductDisplay
 					$scope.user.CurrentOrderID = o.ID;
 					User.save($scope.user, function(){
 						$scope.addToOrderIndicator = true;
-						$location.path('/cart' + ($scope.isEditforApproval ? '/' + o.ID : ''));
+						$location.path('/checkout' + ($scope.isEditforApproval ? '/' + o.ID : ''));
 					});
 				},
 				function(ex) {

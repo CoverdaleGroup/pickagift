@@ -1,3 +1,6 @@
+//**Granata**
+//Search and replace ex8-default to set your own default category
+
 four51.app.controller('CheckOutViewCtrl', ['$scope', '$routeParams', '$location', '$filter', '$rootScope', '$451', 'User', 'Order', 'OrderConfig', 'FavoriteOrder', 'AddressList', 'GoogleAnalytics',
 function ($scope, $routeParams, $location, $filter, $rootScope, $451, User, Order, OrderConfig, FavoriteOrder, AddressList, GoogleAnalytics) {
 	$scope.errorSection = 'open';
@@ -10,7 +13,7 @@ function ($scope, $routeParams, $location, $filter, $rootScope, $451, User, Orde
 	}
 
 	if (!$scope.currentOrder) {
-        $location.path('catalog');
+        $location.path('catalog/ex8-default');
     }
 
 	$scope.hasOrderConfig = OrderConfig.hasConfig($scope.currentOrder, $scope.user);
@@ -75,9 +78,9 @@ function ($scope, $routeParams, $location, $filter, $rootScope, $451, User, Orde
 
     $scope.continueShopping = function() {
 	    if (confirm('Do you want to save changes to your order before continuing?') == true)
-	        saveChanges(function() { $location.path('catalog') });
+	        saveChanges(function() { $location.path('catalog/ex8-default') });
         else
-		    $location.path('catalog');
+		    $location.path('catalog/ex8-default');
     };
 
     $scope.cancelOrder = function() {
@@ -90,7 +93,7 @@ function ($scope, $routeParams, $location, $filter, $rootScope, $451, User, Orde
 			        User.save($scope.user, function(data) {
 				        $scope.user = data;
 				        $scope.displayLoadingIndicator = false;
-				        $location.path('catalog');
+				        $location.path('catalog/ex8-default');
 			        });
 		        },
 		        function(ex) {

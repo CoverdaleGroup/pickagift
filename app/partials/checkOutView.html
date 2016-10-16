@@ -1,14 +1,39 @@
+<!--**Granata**
+Hide the nav-->
+
 <section>
     <loadingindicator ng-show="displayLoadingIndicator" title="{{'Please wait while we update your order' | r | xlat}}" />
-    <div class="col-md-4 col-md-offset-1 col-md-push-7 col-collapse">
+    <!-- <div class="col-md-4 col-md-offset-1 col-md-push-7 col-collapse">
         <ordersummary />
-    </div>
+    </div> -->
 
-    <div class="col-md-7 col-md-pull-5 col-collapse" ng-show="currentOrder && currentOrder.isEditable" ng-click="showSuccessAlert = false">
-        <orderdetails ng-show="hasOrderConfig" />
+    <div class="col-md-12" ng-show="currentOrder && currentOrder.isEditable" ng-click="showSuccessAlert = false">
+        <!-- <orderdetails ng-show="hasOrderConfig" /> -->
         <ordershipping />
-        <orderbilling ng-show="currentOrder.BillingEnabled" />
-        <orderapprovals ng-show="currentOrder.Approvals" />
+        <!-- <orderbilling ng-show="currentOrder.BillingEnabled" /> -->
+        <!-- <orderapprovals ng-show="currentOrder.Approvals" /> -->
+        
+        <div class="col-sm-12">
+            <div ng-repeat="item in currentOrder.LineItems">
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <figure>
+                                    <img style="width:300px;" ng-src="{{item.Product.LargeImageUrl}}" />
+                                </figure>
+                            </div>
+                            <div class="col-md-6">
+                                    <h3 class="text-primary">
+                                        You chose the {{item.Product.Name}}!
+                                    </h3>
+                                    <p>
+                                        To complete your order, click the GREEN BUTTON below.
+                                    </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+        
         <div class="navbar-fixed-bottom">
             <div class="view-response-message alert-success text-center" alert-show="actionMessage">
                 <p>{{actionMessage | r | xlat}}</p>
